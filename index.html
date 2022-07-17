@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function(){
+                let check_correct = document.querySelector('.correct');
+
+                document.querySelector('#warning1').style.fontFamily = 'Verdana';
+                document.querySelector('#warning1').style.fontWeight = 'bold';
+
+                check_correct.addEventListener('click', function(){
+                    check_correct.style.backgroundColor = '#cefad0';
+                    document.querySelector('#warning1').innerHTML = 'Correct!';
+                });
+
+                let check_incorrect = document.querySelectorAll('.incorrect');
+                for (let i = 0; i < check_incorrect.length; i++) {
+                    check_incorrect[i].addEventListener('click', function() {
+                        check_incorrect[i].style.backgroundColor = '#f7b4bb';
+                        document.querySelector('#warning1').innerHTML = 'Incorrect';
+                    });
+                }
+                document.querySelector('.answer').addEventListener('click', function(){
+
+                    document.querySelector('#warning2').style.fontFamily = 'Verdana';
+                    document.querySelector('#warning2').style.fontWeight = 'bold';
+
+                    let input = document.querySelector('input');
+                    if (input.value === 'Exons') {
+                        input.style.backgroundColor = '#cefad0';
+                        document.querySelector('#warning2').innerHTML = 'Correct!';
+                    } else {
+                        input.style.backgroundColor = '#f7b4bb';
+                        document.querySelector('#warning2').innerHTML = 'Incorrect';
+                    }
+                })
+            });
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>At what point during normal DNA replication is genetic material lost from the telomeres? </h3>
+
+                <button class="incorrect">Enzymatic action of telomerase </button>
+                <button class="incorrect">“Unzipping” by DNA helicase </button>
+                <button class="incorrect">Attachment of DNA polymerase to the leading strand </button>
+                <button class="correct">Joining of adjacent Okazaki fragments </button>
+
+                <p id="warning1"></p>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>A point mutation within what functional division of a DNA sequence would be most likely to ultimately result in the production of proteins which differ from the non-mutated form by only a single amino acid? </h3>
+                <input autocomplete="off" autofocus placeholder="Your answer" type="text">
+                <button class="answer">Check Answer </button>
+
+                <p id="warning2"></p>
+                <!-- Correct answer "exons" -->
+            </div>
+        </div>
+    </body>
+</html>
